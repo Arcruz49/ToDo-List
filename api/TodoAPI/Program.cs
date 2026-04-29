@@ -50,6 +50,11 @@ builder.Services.AddScoped<IDeleteTask, DeleteTask>();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<Context>().Database.Migrate();
+}
+
 app.UseExceptionHandler(errorApp => errorApp.Run(async context =>
 {
     var error = context.Features.Get<Microsoft.AspNetCore.Diagnostics.IExceptionHandlerFeature>()?.Error;

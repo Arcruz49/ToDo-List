@@ -6,8 +6,6 @@ services:
       POSTGRES_USER: arthur.cruz
       POSTGRES_PASSWORD: todo123
       POSTGRES_DB: todo_db
-    ports:
-      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 

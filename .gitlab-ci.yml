@@ -1,0 +1,37 @@
+stages:
+  - test
+  - deploy
+
+test:api:
+  stage: test
+  script:
+    - cd api
+    - dotnet restore
+    - dotnet test --no-restore --verbosity normal
+  tags:
+    - homeserver
+  only:
+    - main
+    - merge_requests
+
+test:front:
+  stage: test
+  script:
+    - cd front
+    - npm ci
+    - npm run lint
+  tags:
+    - homeserver
+  only:
+    - main
+    - merge_requests
+
+deploy:
+  stage: deploy
+  script:
+    - docker compose up -d --build
+    - docker image prune -f
+  tags:
+    - homeserver
+  only:
+    - main

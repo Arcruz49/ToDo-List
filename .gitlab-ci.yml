@@ -5,7 +5,7 @@ stages:
 test:api:
   stage: test
   script:
-    - cd api
+    - cd api/TodoAPI
     - dotnet restore
     - dotnet test --no-restore --verbosity normal
   tags:

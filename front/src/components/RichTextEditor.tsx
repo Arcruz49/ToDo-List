@@ -70,7 +70,7 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
     if (!sourceMode) {
       setSourceHtml(editor.getHTML());
     } else {
-      editor.commands.setContent(sourceHtml, false);
+      editor.commands.setContent(sourceHtml, { emitUpdate: false });
       const html = sourceHtml;
       onChange(html === '<p></p>' ? '' : html);
     }

@@ -24,7 +24,7 @@ public class TaskControllerTests
     }
 
     private static TaskResponse BuildResponse(Guid? id = null, string title = "Task") =>
-        new(id ?? Guid.NewGuid(), title, "Description", DateTime.UtcNow, null, TodoTaskStatus.Pending, "yellow");
+        new(id ?? Guid.NewGuid(), title, "Description", DateTime.UtcNow, null, TodoTaskStatus.Pending, "yellow", null);
 
     // --- CreateTask ---
 
